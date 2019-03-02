@@ -29,7 +29,7 @@ public class JobApplication {
 	private boolean hasResponded;
 	
 	@Column(name = "responseDate", columnDefinition="DATE")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date responseDate;
 	
 	private boolean calledForInterview;

@@ -12,4 +12,22 @@ public class JobSeniority {
 	
 	private String seniorityName;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getSeniorityName() {
+		return seniorityName;
+	}
+
+	public void setSeniorityName(String seniorityName) {
+		this.seniorityName = seniorityName;
+	}
+	
+	
+
 }
