@@ -27,6 +27,50 @@ public class JobApplication {
 	private Date applicationDate;
 	
 	private boolean hasResponded;
+	
+	@Column(name = "responseDate", columnDefinition="DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date responseDate;
+	
+	private boolean calledForInterview;
+	
+	@Column(columnDefinition="TEXT")
+	private String comment;
+	
+	
+	
+
+	public Date getResponseDate() {
+		return responseDate;
+	}
+
+	public void setResponseDate(Date responseDate) {
+		this.responseDate = responseDate;
+	}
+
+	public boolean isCalledForInterview() {
+		return calledForInterview;
+	}
+
+	public void setCalledForInterview(boolean calledForInterview) {
+		this.calledForInterview = calledForInterview;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public boolean isHasResponded() {
+		return hasResponded;
+	}
+
+	public void setHasResponded(boolean hasResponded) {
+		this.hasResponded = hasResponded;
+	}
 
 	public Long getId() {
 		return id;
