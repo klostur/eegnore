@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,7 +24,7 @@ public class JobApplication {
 	private JobSeniority jobSeniority;
 	
 	@Column(name = "applicationDate", columnDefinition="DATE")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date applicationDate;
 	
 	private boolean hasResponded;
@@ -37,8 +38,24 @@ public class JobApplication {
 	@Column(columnDefinition="TEXT")
 	private String comment;
 	
+	@Column(columnDefinition="TIMESTAMP")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
+	
+	@PrePersist
+    protected void onCreate() {
+    createdAt = new Date();
+    }
 	
 	
+	
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
 	public Date getResponseDate() {
 		return responseDate;

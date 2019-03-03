@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.klostur.eegnor.model.JobApplication;
@@ -20,5 +24,19 @@ public class JobApplicationController {
 	public ResponseEntity<List<JobApplication>> findAll(){
 		List<JobApplication> jobs = jobApplicationService.findAll();
 		return new ResponseEntity<List<JobApplication>>(jobs, HttpStatus.OK);
+	}
+	@GetMapping(value="api/jobs/{id}")
+	public ResponseEntity<JobApplication> findOne(@PathVariable Long id){
+		JobApplication retVal = jobApplicationService.findOne(id);
+		if (retVal != null) {
+			return new ResponseEntity<>(retVal, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	@PostMapping(value="api/jobs")
+	public ResponseEntity<JobApplication> create(@RequestBody JobApplication jobApplication) {
+		JobApplication job = jobApplicationService.save(jobApplication);
+		return new ResponseEntity<>(job, HttpStatus.CREATED);
 	}
 }

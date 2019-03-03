@@ -17,5 +17,13 @@ public class JobApplicationService {
 	public List<JobApplication> findAll() {
 		return jobApplicationRepo.findAll();
 	}
+
+	public JobApplication findOne(Long id) {
+		return jobApplicationRepo.findOne(id);
+	}
+
+	public JobApplication save(JobApplication jobApplication) {
+		return jobApplicationRepo.save(jobApplication);
+	}
 	
 }
