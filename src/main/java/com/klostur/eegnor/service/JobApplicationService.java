@@ -25,5 +25,9 @@ public class JobApplicationService {
 	public JobApplication save(JobApplication jobApplication) {
 		return jobApplicationRepo.save(jobApplication);
 	}
+
+	public void delete(Long id) {
+		jobApplicationRepo.delete(id);
+	}
 	
 }
